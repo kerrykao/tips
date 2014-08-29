@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
                             
+    @IBOutlet weak var totalViewBg: UIView!
+    @IBOutlet weak var tipVIewBg: UIView!
     @IBOutlet weak var tipControl: UISegmentedControl!
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
@@ -19,6 +21,10 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
+        self.tipControl.alpha = 0
+        self.totalViewBg.alpha = 0
+        self.tipVIewBg.alpha = 0
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,6 +49,11 @@ class ViewController: UIViewController {
 
     @IBAction func onTap(sender: AnyObject) {
         view.endEditing(true)
+        UIView.animateWithDuration(0.4, animations: {
+            self.tipControl.alpha = 1
+            self.totalViewBg.alpha = 1
+            self.tipVIewBg.alpha = 1
+        })
     }
 }
 
